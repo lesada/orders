@@ -1,14 +1,32 @@
+import { useRef, useState } from "react";
+
+import { FlatList, SectionList, Text, View } from "react-native";
+
 import CategoryButton from "@/components/categoryButtton";
-import { CATEGORIES } from "@/utils/data/products";
-import { useState } from "react";
-import { FlatList, View } from "react-native";
+import Product from "@/components/product";
+import { CATEGORIES, MENU } from "@/utils/data/products";
+
 import Header from "../components/header";
 
 function Home() {
   const [category, setCategory] = useState(CATEGORIES[0]);
 
-  function handleCategoryChange(newCategory: string) {
-    setCategory(newCategory);
+  const sectionListRef = useRef<SectionList>(null);
+
+  function handleCategoryChange(selectedCategory: string) {
+    setCategory(selectedCategory);
+
+    const sectionIndex = CATEGORIES.findIndex(
+      (category) => category === selectedCategory,
+    );
+
+    if (sectionListRef.current)
+      sectionListRef.current.scrollToLocation({
+        sectionIndex,
+        itemIndex: 0,
+        viewPosition: 0,
+        animated: true,
+      });
   }
 
   return (
@@ -28,6 +46,22 @@ function Home() {
         className="max-h-10 mt-5"
         contentContainerStyle={{ gap: 12, paddingHorizontal: 20 }}
         showsHorizontalScrollIndicator={false}
+      />
+
+      <SectionList
+        ref={sectionListRef}
+        sections={MENU}
+        keyExtractor={(item) => item.id}
+        stickySectionHeadersEnabled={false}
+        renderItem={({ item }) => <Product data={item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text className="text-white text-xl font-heading mt-8 mb-3">
+            {title}
+          </Text>
+        )}
+        className="flex-1 p-5"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 60 }}
       />
     </View>
   );
