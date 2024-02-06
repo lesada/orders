@@ -1,8 +1,4 @@
-import { Slot, SplashScreen } from "expo-router";
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { useEffect } from "react";
 
 import {
   Inter_400Regular,
@@ -11,7 +7,11 @@ import {
   Inter_700Bold,
   useFonts,
 } from "@expo-google-fonts/inter";
-import { useEffect } from "react";
+import { Slot, SplashScreen } from "expo-router";
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 SplashScreen.preventAutoHideAsync();
 
