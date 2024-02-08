@@ -1,5 +1,6 @@
-import clsx from "clsx";
 import { Pressable, PressableProps, Text } from "react-native";
+
+import clsx from "clsx";
 
 interface CategoryButtonProps extends PressableProps {
   title: string;
