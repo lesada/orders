@@ -1,7 +1,14 @@
 import { useRef, useState } from "react";
 
+import {
+  FlatList,
+  SectionList,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+
 import { Link } from "expo-router";
-import { FlatList, SectionList, Text, View } from "react-native";
 
 import CategoryButton from "@/components/categoryButtton";
 import Product from "@/components/product";
@@ -61,7 +68,9 @@ function Home() {
         stickySectionHeadersEnabled={false}
         renderItem={({ item }) => (
           <Link href={`/product/${item.id}`} className="w-full" asChild>
-            <Product data={item} />
+            <TouchableOpacity>
+              <Product data={item} />
+            </TouchableOpacity>
           </Link>
         )}
         renderSectionHeader={({ section: { title } }) => (

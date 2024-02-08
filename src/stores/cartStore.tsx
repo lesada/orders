@@ -11,12 +11,17 @@ export interface ProductCartProps extends ProductProps {
 interface StateProps {
   products: ProductCartProps[];
   add: (product: ProductProps) => void;
+  removeOneItem: (productId: string) => void;
 }
 
 const useCartStore = create<StateProps>((set) => ({
   products: [],
   add: (product: ProductProps) =>
     set((state) => ({ products: cartInMemory.add(state.products, product) })),
+  removeOneItem: (productId: string) =>
+    set((state) => ({
+      products: cartInMemory.removeOneItem(state.products, productId),
+    })),
 }));
 
 export default useCartStore;

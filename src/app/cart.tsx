@@ -1,6 +1,7 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 
 import { Feather } from "@expo/vector-icons";
+import colors from "tailwindcss/colors";
 
 import { Button } from "@/components/button";
 import Header from "@/components/header";
@@ -28,9 +29,31 @@ function Cart() {
           <FlatList
             data={cartStore.products}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <Product data={item} />}
+            renderItem={({ item }) => (
+              <View>
+                <Product data={item} />
+                <View className="flex-row items-center w-auto m-2 ml-auto">
+                  <TouchableOpacity
+                    className="w-8 h-4 items-center justify-center"
+                    onPress={() => cartStore.removeOneItem(item.id)}
+                  >
+                    <Feather name="minus" size={16} color={colors.slate[300]} />
+                  </TouchableOpacity>
+                  <Text className="text-slate-400 text-xs font-subtitle mr-4 text-center mx-auto">
+                    {item.quantity}
+                  </Text>
+                  <TouchableOpacity
+                    className="w-8 h-4 items-center justify-center"
+                    onPress={() => cartStore.add(item)}
+                  >
+                    <Feather name="plus" size={16} color={colors.slate[300]} />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
             showsVerticalScrollIndicator={false}
-            className="border-b border-slate-700 "
+            className="border-b border-slate-700"
+            contentContainerStyle={{ gap: 16 }}
           />
         ) : (
           <Text className="text-center text-slate-400  font-body my-8">
