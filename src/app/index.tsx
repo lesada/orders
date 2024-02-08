@@ -74,7 +74,7 @@ function Home() {
           </Link>
         )}
         renderSectionHeader={({ section: { title } }) => (
-          <Text className="text-white text-xl font-heading my-2">{title}</Text>
+          <Text className="text-white text-xl font-heading py-2">{title}</Text>
         )}
         className="flex-1 p-5"
         showsVerticalScrollIndicator={false}

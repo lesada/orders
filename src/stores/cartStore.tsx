@@ -14,6 +14,7 @@ interface StateProps {
   products: ProductCartProps[];
   add: (product: ProductProps) => void;
   remove: (productId: string) => void;
+  clear: () => void;
 }
 
 const useCartStore = create(
@@ -28,6 +29,7 @@ const useCartStore = create(
         set((state) => ({
           products: cartInMemory.remove(state.products, productId),
         })),
+      clear: () => set({ products: cartInMemory.clear() }),
     }),
     {
       name: "orders:cart-storage",

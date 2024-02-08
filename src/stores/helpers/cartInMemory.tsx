@@ -29,3 +29,7 @@ export function remove(products: ProductCartProps[], productId: string) {
       : product,
   );
 }
+
+export function clear() {
+  return [];
+}
