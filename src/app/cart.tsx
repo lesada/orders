@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 
+import { PHONE_NUMBER } from "@env";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
 import colors from "tailwindcss/colors";
@@ -48,9 +49,8 @@ function Cart() {
       .join("");
 
     const message = `NOVO PEDIDO \n \n Entregar em: ${adress} \n\n Items: ${products} \n \n Total: ${total}`;
-    const phone = "5511999999999";
     Linking.openURL(
-      `http://api.whatsapp.com/send?phone=${phone}&text=${message}`,
+      `http://api.whatsapp.com/send?phone=${PHONE_NUMBER}&text=${message}`,
     );
 
     cartStore.clear();
