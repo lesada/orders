@@ -35,7 +35,7 @@ function Cart() {
                 <View className="flex-row items-center w-auto m-2 ml-auto">
                   <TouchableOpacity
                     className="w-8 h-4 items-center justify-center"
-                    onPress={() => cartStore.removeOneItem(item.id)}
+                    onPress={() => cartStore.remove(item.id)}
                   >
                     <Feather name="minus" size={16} color={colors.slate[300]} />
                   </TouchableOpacity>

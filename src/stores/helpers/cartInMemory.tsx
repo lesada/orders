@@ -17,7 +17,7 @@ export function add(products: ProductCartProps[], newProduct: ProductProps) {
   return [...products, { ...newProduct, quantity: 1 }];
 }
 
-export function removeOneItem(products: ProductCartProps[], productId: string) {
+export function remove(products: ProductCartProps[], productId: string) {
   const existingProduct = products.find((product) => product.id === productId);
 
   if (existingProduct?.quantity === 1)
