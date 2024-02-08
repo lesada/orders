@@ -74,13 +74,11 @@ function Home() {
           </Link>
         )}
         renderSectionHeader={({ section: { title } }) => (
-          <Text className="text-white text-xl font-heading mt-8 mb-3">
-            {title}
-          </Text>
+          <Text className="text-white text-xl font-heading my-2">{title}</Text>
         )}
         className="flex-1 p-5"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 60 }}
+        contentContainerStyle={{ paddingBottom: 60, gap: 20 }}
       />
     </View>
   );

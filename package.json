@@ -15,6 +15,7 @@
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo/vector-icons": "^14.0.0",
+    "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.0.2",
     "@typescript-eslint/parser": "^6.21.0",
     "clsx": "^2.1.0",
